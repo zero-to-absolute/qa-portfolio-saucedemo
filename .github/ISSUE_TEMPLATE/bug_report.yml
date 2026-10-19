@@ -1,0 +1,159 @@
+name: Баг-репорт
+description: Дефект, найденный при тестировании Sauce Demo
+title: "[Модуль] Что происходит при каких условиях"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Заголовок отвечает на вопрос «где, что и при каких условиях» и читается без открытия карточки.
+        Плохо: «Не работает корзина». Хорошо: «[Корзина] Счётчик не обнуляется после удаления последнего товара».
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: Модуль
+      options:
+        - Авторизация
+        - Каталог
+        - Сортировка
+        - Карточка товара
+        - Корзина
+        - Оформление заказа
+        - Боковое меню
+        - Другое
+    validations:
+      required: true
+
+  - type: dropdown
+    id: account
+    attributes:
+      label: Учётная запись
+      options:
+        - standard_user
+        - problem_user
+        - performance_glitch_user
+        - error_user
+        - visual_user
+        - locked_out_user
+        - Все учётные записи
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Серьёзность (Severity)
+      description: Насколько дефект ломает систему. Оценку ставит тестировщик.
+      options:
+        - Blocker — работа с системой невозможна
+        - Critical — не работает ключевая функция
+        - Major — функция работает неправильно, есть обходной путь
+        - Minor — незначительное отклонение
+        - Trivial — косметический дефект
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Приоритет (Priority)
+      description: Как срочно чинить с точки зрения бизнеса.
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Обоснование оценок
+      description: Почему именно такие серьёзность и приоритет. Они расходятся чаще, чем совпадают.
+      value: |
+        Серьёзность — потому что
+        Приоритет — потому что
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Окружение
+      value: |
+        Браузер и версия:
+        ОС:
+        Разрешение экрана:
+        URL:
+    validations:
+      required: true
+
+  - type: textarea
+    id: preconditions
+    attributes:
+      label: Предусловия
+      description: Состояние системы, из которого начинаются шаги.
+      placeholder: Пользователь авторизован, в корзине один товар
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+      description: Один шаг — одно действие пользователя. Проверок внутри шагов нет.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Фактический результат
+      description: Что произошло. Наблюдаемый факт, без догадок о причине.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемый результат
+      description: Что должно было произойти и на каком основании (поведение под standard_user, другой модуль, ожидания пользователя).
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reproducibility
+    attributes:
+      label: Воспроизводимость
+      options:
+        - Всегда
+        - Иногда
+        - Однократно
+    validations:
+      required: true
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Вложения
+      description: Перетащи сюда скриншот, видео или HAR-файл.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Лог консоли
+      description: Только сообщения, относящиеся к дефекту. Предупреждения браузера о стилях сюда не нужны.
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Перед отправкой
+      options:
+        - label: Воспроизвёл дефект с нуля в новой вкладке
+          required: true
+        - label: Проверил, что такого дефекта ещё нет среди Issues
+          required: true
