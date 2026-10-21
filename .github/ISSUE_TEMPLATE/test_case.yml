@@ -1,0 +1,112 @@
+name: Тест-кейс
+description: Проверка одного условия с шагами и ожидаемым результатом
+title: "[TC-МОДУЛЬ-000] Что проверяем"
+labels: ["test-case"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Кейс проверяет одну вещь и не зависит от других кейсов: всё нужное для старта — в предусловиях.
+        Шаг — действие пользователя, проверка живёт в ожидаемом результате.
+
+  - type: input
+    id: tc_id
+    attributes:
+      label: ID
+      placeholder: TC-CART-001
+    validations:
+      required: true
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: Модуль
+      options:
+        - Авторизация
+        - Каталог
+        - Сортировка
+        - Карточка товара
+        - Корзина
+        - Оформление заказа
+        - Боковое меню
+        - Другое
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Тип
+      options:
+        - Позитивный
+        - Негативный
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Приоритет
+      description: Насколько важно выполнить кейс, если времени мало.
+      options:
+        - Высокий
+        - Средний
+        - Низкий
+    validations:
+      required: true
+
+  - type: dropdown
+    id: technique
+    attributes:
+      label: Техника тест-дизайна
+      options:
+        - Классы эквивалентности
+        - Граничные значения
+        - Таблица решений
+        - Переходы состояний
+        - Попарное тестирование
+        - Сценарий использования
+        - Предугадывание ошибок
+    validations:
+      required: true
+
+  - type: input
+    id: basis
+    attributes:
+      label: Основание
+      description: Что проверяем — пункт чек-листа, требование или поведение под standard_user.
+      placeholder: "Чек-лист: Корзина, п. 4 — удаление последнего товара"
+
+  - type: textarea
+    id: preconditions
+    attributes:
+      label: Предусловия
+      value: |
+        Учётная запись:
+        Состояние:
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги
+      value: |
+        1.
+        2.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемый результат
+      description: Конкретно и проверяемо. Не «работает корректно», а что именно видно на экране.
+    validations:
+      required: true
+
+  - type: textarea
+    id: postconditions
+    attributes:
+      label: Постусловия
+      description: В каком состоянии остаётся система, чтобы кейс можно было прогнать повторно.
