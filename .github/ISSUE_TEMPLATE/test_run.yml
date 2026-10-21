@@ -1,0 +1,66 @@
+name: Прогон тестов
+description: Отчёт о выполнении набора тест-кейсов
+title: "[Прогон] Название набора — ДД.ММ.ГГГГ"
+labels: ["test-run"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Тест-кейсы и баги указывай через номер issue — `#12`: GitHub сам превратит его в ссылку.
+
+  - type: input
+    id: suite
+    attributes:
+      label: Набор
+      placeholder: Регресс корзины / дымовой набор / все кейсы модуля «Оформление заказа»
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Окружение
+      value: |
+        Браузер и версия:
+        ОС:
+        Учётные записи:
+    validations:
+      required: true
+
+  - type: textarea
+    id: results
+    attributes:
+      label: Результаты по кейсам
+      description: Статусы — Пройден, Провален, Заблокирован, Пропущен.
+      value: |
+        | Кейс | Статус | Баг / комментарий |
+        |---|---|---|
+        | #  |  |  |
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Сводка
+      value: |
+        Всего:
+        Пройдено:
+        Провалено:
+        Заблокировано:
+        Пропущено:
+    validations:
+      required: true
+
+  - type: textarea
+    id: blocked
+    attributes:
+      label: Что не удалось проверить и почему
+
+  - type: textarea
+    id: conclusion
+    attributes:
+      label: Вывод
+      description: Можно ли выпускать, какие области наиболее проблемные, что проверить дополнительно.
+    validations:
+      required: true
