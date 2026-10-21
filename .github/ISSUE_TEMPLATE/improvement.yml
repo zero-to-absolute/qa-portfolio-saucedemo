@@ -1,0 +1,58 @@
+name: Предложение по улучшению
+description: Система работает, но можно сделать удобнее. Это не дефект.
+title: "[Модуль] Что улучшить"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Если система работает не так, как должна, — это баг-репорт, а не предложение.
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: Модуль
+      options:
+        - Авторизация
+        - Каталог
+        - Сортировка
+        - Карточка товара
+        - Корзина
+        - Оформление заказа
+        - Боковое меню
+        - Другое
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Как сейчас
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Что предлагаю
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Зачем
+      description: Какую проблему пользователя это решает.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Приоритет
+      options:
+        - Высокий
+        - Средний
+        - Низкий
+    validations:
+      required: true
